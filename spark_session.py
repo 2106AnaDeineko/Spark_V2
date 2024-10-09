@@ -1,5 +1,8 @@
-from spark_session import spark_session
-from dir_dfs.basic_df_AnaDe import basic_test_df
+from pyspark import SparkConf
+from pyspark.sql import SparkSession
 
-df = basic_test_df()
-df.show()
+spark_session = (SparkSession.builder
+                 .master("local")
+                 .appName("test app")
+                 .config(conf=SparkConf())
+                 .getOrCreate())
